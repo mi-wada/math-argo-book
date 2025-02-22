@@ -3,8 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Printf("sum(1, 100): %v\n", sum(1, 100))
-	fmt.Printf("sumFast(1, 100): %v\n", sumFast(1, 100))
+	printMod(1, 1)
+	printMod(0, 1)
+	printMod(3, 2)
+	printMod(-3, 2)
+	printMod(-3, -2)
+	printMod(3, -2)
+}
+
+func printMod(a, b int) {
+	fmt.Printf("%d %% %d = %d\n", a, b, a%b)
 }
 
 // sum returns the sum of all integers i, from <= i <= to.

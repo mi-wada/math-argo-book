@@ -22,9 +22,10 @@ func main() {
 		a[i], _ = strconv.Atoi(str)
 	}
 
-	ans := 0
+	sum := 0
 	for _, v := range a {
-		ans += v
+		sum += v
 	}
+	ans := sum % 100
 	fmt.Println(ans)
 }

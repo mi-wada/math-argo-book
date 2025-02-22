@@ -9,10 +9,10 @@ import (
 )
 
 func main() {
-	// N
+	// N S
+	var n, s int
+	fmt.Scan(&n, &s)
 	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	n, _ := strconv.Atoi(scanner.Text())
 	// a1, a2, ..., an
 	scanner.Scan()
 	line := scanner.Text()
@@ -22,9 +22,23 @@ func main() {
 		a[i], _ = strconv.Atoi(str)
 	}
 
-	ans := 0
-	for _, v := range a {
-		ans += v
+	ans := false
+	for bits := 0; bits < (1 << n); bits += 1 {
+		sum := 0
+		for i := 0; i < n; i++ {
+			if (bits>>i)&1 == 1 {
+				sum += a[i]
+			}
+		}
+		if sum == s {
+			ans = true
+			break
+		}
 	}
-	fmt.Println(ans)
+
+	if ans {
+		fmt.Println("Yes")
+	} else {
+		fmt.Println("No")
+	}
 }
