@@ -3,12 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	printMod(1, 1)
-	printMod(0, 1)
-	printMod(3, 2)
-	printMod(-3, 2)
-	printMod(-3, -2)
-	printMod(3, -2)
+	printMod(2, 56)
 }
 
 func printMod(a, b int) {
