@@ -25,7 +25,7 @@ func main() {
 
 	ans := a[0]
 	for _, v := range a {
-		ans = gcd(v, ans)
+		ans = lcm(v, ans)
 	}
 	fmt.Println(ans)
 }
@@ -35,4 +35,10 @@ func gcd(a, b int) int {
 		return b
 	}
 	return gcd(b, a%b)
+}
+
+func lcm(a, b int) int {
+	g := gcd(a, b)
+	// WARN: a * b / gだとオーバーフローする
+	return (a / g) * b
 }

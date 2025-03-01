@@ -13,7 +13,6 @@ func main() {
 	fmt.Scan(&n)
 	scanner := bufio.NewScanner(os.Stdin)
 	// a1, a2, ..., an
-	// WARN: linesをひとつのstringにまとめて取得する方法だと実行時エラーになる
 	a := make([]int, n)
 	scanner.Split(bufio.ScanWords)
 	for i := 0; i < n; i++ {
@@ -23,16 +22,15 @@ func main() {
 		a[i] = v
 	}
 
-	ans := a[0]
+	m := make(map[int]int)
 	for _, v := range a {
-		ans = gcd(v, ans)
+		m[v]++
+	}
+
+	ans := 0
+	for i := 0; i < n-1; i++ {
+		m[a[i]]--
+		ans += m[100000-a[i]]
 	}
 	fmt.Println(ans)
-}
-
-func gcd(a, b int) int {
-	if a%b == 0 {
-		return b
-	}
-	return gcd(b, a%b)
 }

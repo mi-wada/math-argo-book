@@ -23,3 +23,10 @@ func sum(from int, to int) int {
 func sumFast(from int, to int) int {
 	return (from + to) * (to - from + 1) / 2
 }
+
+func fraction(n int) int {
+	if n == 0 {
+		return 1
+	}
+	return n * fraction(n-1)
+}
