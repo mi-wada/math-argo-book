@@ -1,32 +1,33 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+)
 
 func main() {
-	printMod(2, 56)
-}
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Split(bufio.ScanWords)
 
-func printMod(a, b int) {
-	fmt.Printf("%d %% %d = %d\n", a, b, a%b)
-}
+	scanner.Scan()
+	n, _ := strconv.Atoi(scanner.Text())
+	m, _ := strconv.Atoi(scanner.Text())
 
-// sum returns the sum of all integers i, from <= i <= to.
-func sum(from int, to int) int {
-	sum := 0
-	for i := from; i <= to; i++ {
-		sum += i
+	stack := make([]int, 100)
+	for i := 0; i < q; i++ {
+		scanner.Scan()
+		t, _ := strconv.Atoi(scanner.Text())
+		switch t {
+		case 1:
+			scanner.Scan()
+			x, _ := strconv.Atoi(scanner.Text())
+			stack = append(stack, x)
+		case 2:
+			last := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+			fmt.Println(last)
+		}
 	}
-	return sum
-}
-
-// sumFast returns the sum of all integers i, from <= i <= to.
-func sumFast(from int, to int) int {
-	return (from + to) * (to - from + 1) / 2
-}
-
-func fraction(n int) int {
-	if n == 0 {
-		return 1
-	}
-	return n * fraction(n-1)
 }
